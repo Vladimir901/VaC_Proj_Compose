@@ -19,6 +19,6 @@ df_prices = (
     .load()
 )
 
-df = df_prices.groupby(['location', 'bedrooms']).agg(func.mean('price').alias('avg_price'))
+df = df_prices.groupby(['location', 'bedrooms', 'city']).agg(func.mean('price').alias('avg_price'))
 df = df.withColumn('avg_price', func.round('avg_price',2))
 df.show()
